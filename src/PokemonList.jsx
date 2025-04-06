@@ -21,22 +21,21 @@ function ListePokemon() {
 
     recupererTypes(function (data) {
       changerLesTypes(data);
-    });
-  }, []);
+    }); }, []);
 
   function modifierRecherche(evenemen) {
     changerRecherche(evenemen.target.value);
   }
 
   function trierLesPokemons(a, b) {
-    if (tri === "numero-asc") return a.id - b.id;
+    if (tri === "numero-ac") return a.id - b.id;
     if (tri === "numero-desc") return b.id - a.id;
     if (tri === "nom-asc") return a.name.fr.localeCompare(b.name.fr);
     if (tri === "nom-desc") return b.name.fr.localeCompare(a.name.fr);
     if (tri === "poids-asc") return a.weight - b.weight;
     if (tri === "poids-desc") return b.weight - a.weight;
     if (tri === "taille-asc") return a.height - b.height;
-    if (tri === "taille-desc") return b.height - a.height;
+    if (tri === "taille-dsc") return b.height - a.height;
     return 0;
   }
 
@@ -65,6 +64,9 @@ function ListePokemon() {
 
     })
     .sort(trierLesPokemons);
+
+
+    
 
   return (
     <div className="container">
