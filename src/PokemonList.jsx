@@ -66,6 +66,23 @@ function ListePokemon() {
 
     })
     .sort(trierLesPokemons);
+    function recupererLesGenerations(listePokemons) {
+      var generations = [];
+    
+      for (var i = 0; i < listePokemons.length; i++) {
+        var genActuelle = listePokemons[i].generation;
+    
+        if (generations.indexOf(genActuelle) === -1) {
+          generations.push(genActuelle);
+        }
+      }
+    
+      return generations;
+    }
+    
+    function changerFiltreGeneration(evenement) {
+      setFiltreGen(evenement.target.value);
+    }
 
 
 
@@ -88,17 +105,18 @@ function ListePokemon() {
             );
           })}
       </select>
+      
 
-      <select onChange={(e) => setFiltreGen(e.target.value)} className="filter">
-
+      <select onChange={changerFiltreGeneration} className="filter">
         <option value="">Toutes les générations</option>
-
-        {[...new Set(pokemones.map(function (p) { return p.generation; }))].map(function (gen) {
-
-          return <option key={gen} value={gen}>Génération {gen}</option>;
-
-        })}
+         {recupererLesGenerations(pokemones).map(function (g) {
+          return ( <option key={g} value={g}>
+                    Génération {g}
+                    </option>
+          );
+          })}
       </select>
+
 
       <select onChange={(e) => setTri(e.target.value)} className="filter">
         <option value="numero-asc">Numéro croissant</option>
