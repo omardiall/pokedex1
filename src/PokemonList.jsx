@@ -58,6 +58,8 @@ function ListePokemon() {
     })
     .filter(function (pk) {
 
+
+      
       if (filtreGen === "") return true;
 
       return pk.generation === parseInt(filtreGen);
@@ -66,7 +68,7 @@ function ListePokemon() {
     .sort(trierLesPokemons);
 
 
-    
+
 
   return (
     <div className="container">
